@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::get('/about', function() {
+    return view('about');
+})->name('about');
+Route::get('/categories', [BlogController::class, 'index'])->name('categories.index');
+Route::get('/single-blog-post', [BlogController::class, 'show'])->name('single-blog-post.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
